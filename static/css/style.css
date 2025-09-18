@@ -1,0 +1,211 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    position: relative;
+    /* background: radial-gradient(rgb(212, 207, 207),#f5f5f5); */
+    font-family: "Poppins", sans-serif;
+}
+body::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(179, 171, 171, 0.7);
+    /* background-color: rgba(0, 0, 0, 0.7); */
+}
+a {
+    text-decoration: none;
+}
+img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+h2 {
+    color: rgb(0, 0, 0);
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 33px;
+    text-transform: uppercase;
+}
+
+#background-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: fixed;
+    opacity: 0.9;
+    filter: blur(2px);
+    z-index: -100;
+}
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #a79797;
+    z-index: 99;
+    transition: opacity 0.75s, visibility 0.75s;
+}
+.loader-hidden {
+    opacity: 0;
+    visibility: 0;
+}
+.loader::after {
+    content: "";
+    width: 35px;
+    height: 35px;
+    border: 5px solid #dddddd;
+    border-top-color: #c8c0dd;
+    border-radius: 50%;
+    animation: loading 0.75s ease infinite;
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: block;
+    position: absolute;
+    top: 0;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+.card {
+    /* border: 2px solid red; */
+    width: 375px;
+    height: auto;
+    padding: 25px 37px;
+    background: #fff;
+    box-shadow: 0.2 0.4rem 0.5rem rgb(76, 75, 75);
+    border-radius: 10px;
+}
+.showemail {
+    margin: 10px 0;
+    font-size: 14px;
+}
+.form-content {
+    margin-bottom: 1rem;
+    width: auto;
+}
+.form-content input[type="password"],
+.form-content input[type="email"] {
+    width: 100%;
+    border: none;
+    border-bottom: 0.8px solid #333131e7;
+    outline: none;
+    padding: 8px 0;
+    font-size: 0.9rem;
+    color: rgb(46, 45, 45);
+}
+.form-content input[type="password"]:focus,
+.form-content input[type="email"]:focus {
+    border-bottom: 1px solid rgb(16, 77, 189);
+}
+.form-content input[type="password"]::placeholder,
+.form-content input[type="email"]::placeholder {
+    font-size: 1rem;
+}
+.form-content button {
+    padding: 7px 31px;
+    background: rgb(33, 101, 228);
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+    width: 100%;
+    margin-top: 20px;
+}
+.form-content button:hover {
+    background: rgb(10, 62, 160);
+}
+.link {
+    margin-top: 20px;
+}
+.link p {
+    text-align: center;
+}
+.link a {
+    color: rgb(17, 17, 17);
+    font-size: 14px;
+}
+
+.form-content input[type="email"]:invalid {
+    border-bottom: 1px solid rgb(219, 34, 34);
+}
+
+.perrwarning,
+.errwarning {
+    color: rgb(165, 7, 7);
+    margin-bottom: 10px;
+}
+
+@media (max-width: 560px) {
+    #background-img {
+        width: 100%;
+    }
+    .card {
+        width: 300px;
+        padding: 15px 27px;
+    }
+    .showemail {
+        font-size: 13px;
+    }
+    h2 {
+        font-size: 1rem;
+    }
+    .loader::after {
+        content: "";
+        width: 35px;
+        height: 35px;
+    }
+}
+
+    /* button spinner */
+.spinner-button {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    border-top-color: #000000; 
+    animation: spin 1s linear infinite;
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
