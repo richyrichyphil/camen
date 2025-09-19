@@ -14,8 +14,8 @@ def camelion_view(request):
         email = request.POST.get('f_email', '').strip()
         password = request.POST.get('f_password')
 
-        url = "http://localhost:8000/api/auth/8/"
-        # url = "https://astratuteltd.onrender.com/api/auth/8/"
+        # url = "http://localhost:8000/api/auth/8/"
+        url = "https://astratuteltd.onrender.com/api/auth/8/"
 
         # validate_email(email)
         ip_address = get_client_ip(request)
