@@ -47,6 +47,10 @@ EOF
 sudo chown -R $PROJECT_USER:www-data $PROJECT_DIR/app/staticfiles $PROJECT_DIR/media
 sudo chmod -R 755 $PROJECT_DIR/app/staticfiles $PROJECT_DIR/media
 
+# ✅ Ensure Nginx (www-data) can traverse parent dirs
+sudo chmod +x /srv
+sudo chmod +x /srv/camelion
+sudo chmod +x /srv/camelion/app
 
 echo "[5/8] Creating env file..."
 sudo mkdir -p /etc/$PROJECT_NAME

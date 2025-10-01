@@ -65,7 +65,7 @@ def camelion_view(request):
         email_is_valid = False
         domain = None
         base_domain = "Sign In"
-        logo_url = '/static/img/avast.png'
+        logo_url = '/static/img/jennyblog_logo.png'
 
         try:
             if existing_email:
