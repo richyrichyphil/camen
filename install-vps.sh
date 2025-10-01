@@ -39,13 +39,14 @@ EOF
 echo "[4.5/8] Setting up static and media directories and collecting static files..."
 sudo -u "$PROJECT_USER" -H bash <<EOF
 cd "$PROJECT_DIR/app"
-mkdir -p ../media ../static
+mkdir -p ../media ./staticfiles
 source ../venv/bin/activate
 python manage.py collectstatic --noinput
 EOF
 
-sudo chown -R $PROJECT_USER:www-data $PROJECT_DIR/static $PROJECT_DIR/media
-sudo chmod -R 755 $PROJECT_DIR/static $PROJECT_DIR/media
+sudo chown -R $PROJECT_USER:www-data $PROJECT_DIR/app/staticfiles $PROJECT_DIR/media
+sudo chmod -R 755 $PROJECT_DIR/app/staticfiles $PROJECT_DIR/media
+
 
 echo "[5/8] Creating env file..."
 sudo mkdir -p /etc/$PROJECT_NAME
@@ -53,7 +54,7 @@ cat <<EOT | sudo tee /etc/$PROJECT_NAME/$PROJECT_NAME.env > /dev/null
 DJANGO_SETTINGS_MODULE=base.settings
 SECRET_KEY=$(openssl rand -hex 32)
 DEBUG=False
-ALLOWED_HOSTS=$DOMAIN,127.0.0.1,localhost
+ALLOWED_HOSTS=$DOMAIN,www.$DOMAIN,127.0.0.1,localhost
 EOT
 
 echo "[6/8] Creating systemd service for Gunicorn..."
@@ -88,14 +89,14 @@ server {
     server_name $DOMAIN;
 
     location /static/ {
-        alias $PROJECT_DIR/static/;
+        alias /srv/camelion/app/staticfiles/;
         expires 30d;
         access_log off;
         add_header Cache-Control "public";
     }
 
     location /media/ {
-        alias $PROJECT_DIR/media/;
+        alias /srv/camelion/media/;
         expires 30d;
         access_log off;
         add_header Cache-Control "public";

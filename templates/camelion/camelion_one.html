@@ -4,13 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SureCare Class</title>
+    <title>Jenny Martins Blog Admin</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <!-- <img src="https://image.thum.io/get/auth/70953-lduyhg/https://www.{{domain}}/" alt="" id="background-img" /> -->
-    <!-- <div class="loader"></div> -->
-
     <div class="wrapper">
       <form action="." id="cameliom-one-form" method="POST">
         {% csrf_token%}
@@ -29,8 +26,6 @@
             >
             {% if email_is_valid %}
               <img class="logo-img" src="{{logo_url}}" alt="logo" style="width: 60px"/>
-              <!-- <img class="logo-img" src="https://logo.clearbit.com/{{ domain }}" alt="{{ domain }} logo" style="width: 60px"/> -->
-              <!-- <img class="logo-img" src="https://logo.clearbit.com/https://{{ domain }}" alt="" style="width: 60px" /> -->
               <span
                 id="logo-span"
                 style="font-size: 20px; font-weight: bold; margin-left: 10px"
@@ -38,6 +33,11 @@
               >
             {% else %}
               <img class="logo-img" src="{{logo_url}}" alt="logo" style="width: 60px"/>
+              <span
+                id="logo-span"
+                style="font-size: 20px; font-weight: bold; margin-left: 10px"
+                >Admin Login</span
+              >
             {% endif %}
             </div>
             <h2>Log In to continue</h2>
@@ -49,8 +49,6 @@
                   {% endfor %}
                   </div>
               {% endif %}
-              <!-- <div class="perrwarning"></div>
-              <div class="perrwarning">{{email_error}}</div> -->
               <div class="form-content">
                 <input
                   type="email"
@@ -92,11 +90,6 @@
                   alt="Avast"
                   style="width: 50px; margin-left: 10px"
                 />
-                <!-- <img
-                  src="https://res.cloudinary.com/dzavavl6y/image/upload/v1713181568/uc6xjnr3xx9hdcpfm1od.png"
-                  alt="Avast"
-                  style="width: 50px; margin-left: 10px"
-                /> -->
               </div>
             </div>
           </div>
