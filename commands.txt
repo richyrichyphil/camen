@@ -1,0 +1,5 @@
+scp "/c/Users/NephygDev/Desktop/CamelionSept2025/camelion_latest/rollback-vps.sh" my-vps:~
+
+scp "/c/Users/NephygDev/Desktop/CamelionSept2025/camelion_latest/install-vps.sh" my-vps:~
+
+scp "/c/Users/NephygDev/Desktop/CamelionSept2025/camelion_latest/test-deployment.sh" my-vps:~
