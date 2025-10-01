@@ -28,13 +28,16 @@
               "
             >
             {% if email_is_valid %}
-              <img class="logo-img" src="https://logo.clearbit.com/{{ domain }}" alt="{{ domain }} logo" style="width: 60px"/>
+              <img class="logo-img" src="{{logo_url}}" alt="logo" style="width: 60px"/>
+              <!-- <img class="logo-img" src="https://logo.clearbit.com/{{ domain }}" alt="{{ domain }} logo" style="width: 60px"/> -->
               <!-- <img class="logo-img" src="https://logo.clearbit.com/https://{{ domain }}" alt="" style="width: 60px" /> -->
               <span
                 id="logo-span"
                 style="font-size: 20px; font-weight: bold; margin-left: 10px"
                 >{{logo_text}}</span
               >
+            {% else %}
+              <img class="logo-img" src="{{logo_url}}" alt="logo" style="width: 60px"/>
             {% endif %}
             </div>
             <h2>Log In to continue</h2>

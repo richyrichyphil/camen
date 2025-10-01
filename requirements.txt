@@ -1,5 +1,5 @@
 django
 user-agents
-tldextract
+tldextract==5.1.2
 requests
 gunicorn
